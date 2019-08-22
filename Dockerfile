@@ -8,10 +8,4 @@ RUN wget -O azcopyv10.tar https://azcopyvnext.azureedge.net/release20190703/azco
     && tar -xf azcopyv10.tar --strip-components=1 --wildcards azcopy_linux_*/azcopy
 FROM ubuntu:18.04 
 
-RUN useradd -U -m -d /home/azcopy azcopy
-
 COPY --from=base --chown=azcopy:azcopy /azcopy /bin/azcopy
-
-USER azcopy
-
-WORKDIR /home/azcopy
